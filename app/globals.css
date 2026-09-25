@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+:root {
+  --hod-bg: #060606;
+  --hod-surface: #11110f;
+  --hod-surface-raised: #171613;
+  --hod-border: rgba(255, 255, 255, 0.065);
+  --hod-border-strong: rgba(228, 184, 95, 0.24);
+  --hod-text: #f7f3eb;
+  --hod-text-muted: #a8a49c;
+  --hod-text-faint: #73706a;
+  --hod-gold: #e4b85f;
+  --hod-gold-bright: #f4cf82;
+  --hod-bronze: #a96f24;
+  --hod-success: #34d399;
+  --hod-warning: #e4b85f;
+  --hod-danger: #f87171;
+  --hod-info: #60a5fa;
+  --hod-focus: #e4b85f;
+  --background: var(--hod-bg);
+  --foreground: var(--hod-text);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-hod-bg: var(--hod-bg);
+  --color-hod-surface: var(--hod-surface);
+  --color-hod-raised: var(--hod-surface-raised);
+  --color-hod-border: var(--hod-border);
+  --color-hod-muted: var(--hod-text-muted);
+  --color-hod-faint: var(--hod-text-faint);
+  --color-hod-gold: var(--hod-gold);
+  --color-hod-success: var(--hod-success);
+  --color-hod-warning: var(--hod-warning);
+  --color-hod-danger: var(--hod-danger);
+  --color-hod-info: var(--hod-info);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--hod-border);
+}
+
+html {
+  color-scheme: dark;
+  background: var(--hod-bg);
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 82% 8%, rgba(228, 184, 95, 0.055), transparent 28rem),
+    radial-gradient(circle at 18% 92%, rgba(169, 111, 36, 0.035), transparent 26rem),
+    var(--hod-bg);
+  color: var(--hod-text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(228, 184, 95, 0.28);
+  color: var(--hod-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hod-focus);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+/* HOD native form controls */
+input,
+select,
+textarea {
+  color-scheme: dark;
+  color: var(--hod-text);
+}
+
+select {
+  color: var(--hod-text);
+  background-color: var(--hod-surface);
+}
+
+select option,
+select optgroup {
+  color: var(--hod-text);
+  background-color: #11110f;
+}
+
+select option:checked,
+select option:hover {
+  color: #171109;
+  background-color: var(--hod-gold);
+}
+
+/* Windows/browser native select menus can otherwise inherit a light theme. */
+@supports (-webkit-appearance: none) {
+  select {
+    -webkit-appearance: auto;
+    color-scheme: dark;
+  }
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #5f5b55;
+  opacity: 1;
+}
+
+.hod-surface {
+  background: rgba(17, 17, 15, 0.72);
+  border: 1px solid var(--hod-border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+}
+
+.hod-surface-raised {
+  background: rgba(23, 22, 19, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.hod-gold-border {
+  border-color: rgba(228, 184, 95, 0.28);
+}
+
+.hod-gold-glow {
+  box-shadow: 0 8px 30px rgba(228, 184, 95, 0.16);
+}
+
+.hod-gold-text {
+  color: var(--hod-gold);
+}
+
+.hod-hover-lift {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.hod-hover-lift:hover {
+  transform: translateY(-1px);
+  border-color: rgba(228, 184, 95, 0.18);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+}
+
+.hod-fade-up {
+  animation: hod-fade-up 420ms ease both;
+}
+
+@keyframes hod-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2926;
+  border: 2px solid #080808;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b463c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
